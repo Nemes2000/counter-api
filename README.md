@@ -15,13 +15,12 @@
 
 The following commands are valid if you run them in the project root!
 
-### Run mypy
+### Run API and DB together
 
-To check I used strict typing run:
-(I only excluded flask_openapi3, cause I could not resolve that issue.)
+With docker compose you can run the API and DB containers together.
 
 ```
-mypy .
+docker-compose up --build
 ```
 
 ### Run database
@@ -44,9 +43,18 @@ pip install -r requirements.txt
 python src/api.py
 ```
 
+### Run mypy
+
+To check I used strict typing run:<br>
+(I only excluded flask_openapi3, cause I could not resolve that issue.)
+
+```
+mypy .
+```
+
 ### Run tests
 
-For running test you need to run this line of code:
+For run usit test you need to run this line of code:
 
 ```
 pytest -v

@@ -2,7 +2,7 @@ from flask import Flask
 from flask.testing import FlaskClient
 from flask_openapi3 import OpenAPI
 import pytest
-from api import create_app  # Adjust path as necessary
+from api import create_app
 
 
 @pytest.fixture
