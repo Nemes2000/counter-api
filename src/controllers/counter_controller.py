@@ -1,8 +1,9 @@
+from flask.typing import ResponseReturnValue
 from flask_openapi3 import Tag, APIView
 from http import HTTPStatus
 
-from model.counter import CounterBody
-from model.error import ErrorResponse
+from models.counter import CounterBody
+from models.error import ErrorResponse
 from services.counter_service import CounterService
 
 
@@ -11,7 +12,7 @@ api_view = APIView(url_prefix="/api/v1", view_tags=[Tag(name="counter")])
 
 @api_view.route("/counter")
 class CounterController:
-    @api_view.doc(
+    @api_view.doc(  # type: ignore[misc]
         summary="Get counter value.",
         responses={
             HTTPStatus.OK: {"content": {"text/plain": {"schema": {"type": "string"}}}},
@@ -22,7 +23,7 @@ class CounterController:
             },
         },
     )
-    def get(self):
+    def get(self) -> ResponseReturnValue:
         try:
             print("get")
             res = CounterService.get_counter()
@@ -34,7 +35,7 @@ class CounterController:
             )
         return CounterBody(value=res).model_dump(), HTTPStatus.OK
 
-    @api_view.doc(
+    @api_view.doc(  # type: ignore[misc]
         summary="Set counter value to the given number. The value can be only a positive number!",
         responses={
             HTTPStatus.OK: {
@@ -59,7 +60,7 @@ class CounterController:
             },
         },
     )
-    def post(self, body: CounterBody):
+    def post(self, body: CounterBody) -> ResponseReturnValue:
         if body.value < 0:
             return (
                 ErrorResponse(msg="Value must be a positive number.").model_dump(),
@@ -78,7 +79,7 @@ class CounterController:
             )
         return "", HTTPStatus.OK
 
-    @api_view.doc(
+    @api_view.doc(  # type: ignore[misc]
         summary="Reset counter value to 0",
         responses={
             HTTPStatus.NO_CONTENT: {
@@ -93,7 +94,7 @@ class CounterController:
             },
         },
     )
-    def delete(self):
+    def delete(self) -> ResponseReturnValue:
         try:
             print("delete")
             CounterService.clear_counter()

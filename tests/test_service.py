@@ -4,7 +4,7 @@ from services.counter_service import CounterService, Counter
 
 
 @pytest.fixture
-def mock_pool():
+def mock_pool() -> tuple[MagicMock, MagicMock]:
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
 
@@ -18,7 +18,7 @@ def mock_pool():
 
 
 @patch("services.counter_service.get_pool")
-def test_get_counter_success(mock_get_pool, mock_pool):
+def test_get_counter_success(mock_get_pool: MagicMock, mock_pool: MagicMock) -> None:
     mock_pool, mock_cursor = mock_pool
     mock_get_pool.return_value = mock_pool
 
@@ -29,7 +29,7 @@ def test_get_counter_success(mock_get_pool, mock_pool):
 
 
 @patch("services.counter_service.get_pool")
-def test_get_counter_not_found(mock_get_pool):
+def test_get_counter_not_found(mock_get_pool: MagicMock) -> None:
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_cursor.fetchone.return_value = None
@@ -45,7 +45,7 @@ def test_get_counter_not_found(mock_get_pool):
 
 
 @patch("services.counter_service.get_pool")
-def test_update_counter(mock_get_pool):
+def test_update_counter(mock_get_pool: MagicMock) -> None:
     mock_pool, mock_cursor = MagicMock(), MagicMock()
     mock_conn = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
@@ -60,7 +60,7 @@ def test_update_counter(mock_get_pool):
 
 
 @patch("services.counter_service.get_pool")
-def test_clear_counter(mock_get_pool):
+def test_clear_counter(mock_get_pool: MagicMock) -> None:
     mock_pool, mock_cursor = MagicMock(), MagicMock()
     mock_conn = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor

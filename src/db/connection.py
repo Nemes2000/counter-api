@@ -7,7 +7,7 @@ load_dotenv()
 _pool = None
 
 
-def get_pool():
+def get_pool() -> ConnectionPool:
     global _pool
     if _pool is None:
         _pool = ConnectionPool(

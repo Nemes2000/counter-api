@@ -11,7 +11,7 @@ class Counter(BaseModel):
 
 class CounterService:
     @staticmethod
-    def get_counter():
+    def get_counter() -> int:
         pool = get_pool()
         with pool.connection() as conn:
             with conn.cursor(row_factory=class_row(Counter)) as cur:
@@ -24,14 +24,14 @@ class CounterService:
                 return obj.value
 
     @staticmethod
-    def update_counter(value: int):
+    def update_counter(value: int) -> None:
         pool = get_pool()
         with pool.connection() as conn:
             with conn.cursor(row_factory=class_row(Counter)) as cur:
                 cur.execute("UPDATE counter SET value=%s WHERE id=1", [value])
 
     @staticmethod
-    def clear_counter():
+    def clear_counter() -> None:
         pool = get_pool()
         with pool.connection() as conn:
             with conn.cursor(row_factory=class_row(Counter)) as cur:
