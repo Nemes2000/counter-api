@@ -4,9 +4,9 @@ This project is done for an interview. The specifcation was the following:
 
 A program egy számlálót valósít meg, aminek az értékét adatbázisban tárolja, és API-n keresztül képes az
 érték manipulálására. Három funkciót kell megvalósítani:
- A számláló jelenlegi értékének lekérése
- A számláló értékének növelése egy megadott pozitív értékkel
- A számláló értékének kinullázása
+ -  A számláló jelenlegi értékének lekérése
+ -  A számláló értékének növelése egy megadott pozitív értékkel
+ -  A számláló értékének kinullázása
 Az API endpoint definíciójára OpenApi leírót használj.
 
 Az adatbázis kapcsolat paraméterei (host, port, felhasználónév, jelszó, adatbázisnév) környezeti
