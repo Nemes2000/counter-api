@@ -3,7 +3,7 @@ from http import HTTPStatus
 
 from model.counter import CounterBody
 from model.error import ErrorResponse
-from service import PostgrewsqlService
+from services.counter_service import CounterService
 
 
 api_view = APIView(url_prefix="/api/v1", view_tags=[Tag(name="counter")])
@@ -25,7 +25,7 @@ class CounterController:
     def get(self):
         try:
             print("get")
-            res = PostgrewsqlService.get_counter()
+            res = CounterService.get_counter()
         except Exception as e:
             print(e)
             return (
@@ -68,7 +68,7 @@ class CounterController:
 
         try:
             print(body)
-            PostgrewsqlService.update_counter(body.value)
+            CounterService.update_counter(body.value)
 
         except Exception as e:
             print(e)
@@ -96,7 +96,7 @@ class CounterController:
     def delete(self):
         try:
             print("delete")
-            PostgrewsqlService.clear_counter()
+            CounterService.clear_counter()
         except Exception as e:
             print(e)
             return (
