@@ -42,7 +42,9 @@ def test_post_counter_negative(client: FlaskClient) -> None:
     "services.counter_service.CounterService.update_counter",
     side_effect=Exception("fail"),
 )
-def test_post_counter_internal_error(mock_update: MagicMock, client: FlaskClient) -> None:
+def test_post_counter_internal_error(
+    mock_update: MagicMock, client: FlaskClient
+) -> None:
     response = client.post("/api/v1/counter", json={"value": 5})
     assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
     assert response.json and "Failed to update counter." in response.json["msg"]

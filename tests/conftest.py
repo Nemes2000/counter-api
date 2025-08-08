@@ -17,5 +17,5 @@ def app() -> OpenAPI:
 
 
 @pytest.fixture
-def client(app: Flask ) -> FlaskClient:
+def client(app: Flask) -> FlaskClient:
     return app.test_client()

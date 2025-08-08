@@ -1,10 +1,14 @@
-from flask.typing import ResponseReturnValue
 from flask_openapi3 import Tag, APIView
 from http import HTTPStatus
 
 from models.counter import CounterBody
 from models.error import ErrorResponse
 from services.counter_service import CounterService
+
+from typing import Tuple, Union, Dict
+
+# Typically used return type for Flask views
+ResponseType = Tuple[Union[str, Dict[str, object]], int]
 
 
 api_view = APIView(url_prefix="/api/v1", view_tags=[Tag(name="counter")])
@@ -23,7 +27,7 @@ class CounterController:
             },
         },
     )
-    def get(self) -> ResponseReturnValue:
+    def get(self) -> ResponseType:
         try:
             print("get")
             res = CounterService.get_counter()
@@ -60,7 +64,7 @@ class CounterController:
             },
         },
     )
-    def post(self, body: CounterBody) -> ResponseReturnValue:
+    def post(self, body: CounterBody) -> ResponseType:
         if body.value < 0:
             return (
                 ErrorResponse(msg="Value must be a positive number.").model_dump(),
@@ -94,7 +98,7 @@ class CounterController:
             },
         },
     )
-    def delete(self) -> ResponseReturnValue:
+    def delete(self) -> ResponseType:
         try:
             print("delete")
             CounterService.clear_counter()

@@ -3,9 +3,10 @@ Flask-Cors==4.0.1
 flask-openapi3==3.1.3
 black==25.1.0
 mypy==1.17.1
-types-Flask-Cors
+types-Flask-Cors==6.0.0.20250520
 psycopg==3.2.9
-dotenv
-psycopg_pool
-pytest
-pytest-mock
+psycopg_pool==3.2.6 
+dotenv==0.9.9
+pytest==8.4.1
+pytest-mock==3.14.1
+psycopg[binary]==3.2.9

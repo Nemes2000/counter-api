@@ -3,17 +3,26 @@
 ## Used technologies
 
 - python 3.12
-- [Flask](!https://flask.palletsprojects.com/en/stable/)
-- [Flask OpenAPI3](!https://luolingchun.github.io/flask-openapi3/v3.x/)
-- [pydantic](!https://docs.pydantic.dev/latest/)
-- [black](!https://black.readthedocs.io/en/stable/index.html) --> run : python -m black src
-- [mypy](!https://mypy.readthedocs.io/en/stable/) ---> run: mypy src
-- [psycopg](!https://www.psycopg.org/psycopg3/docs/)
-- [pytest](!https://docs.pytest.org/en/stable/)
+- [Flask](https://flask.palletsprojects.com/en/stable/)
+- [Flask OpenAPI3](https://luolingchun.github.io/flask-openapi3/v3.x/)
+- [pydantic](https://docs.pydantic.dev/latest/)
+- [black](https://black.readthedocs.io/en/stable/index.html)
+- [mypy](https://mypy.readthedocs.io/en/stable/)
+- [psycopg](https://www.psycopg.org/psycopg3/docs/)
+- [pytest](https://docs.pytest.org/en/stable/)
 
 ## Run project
 
 The following commands are valid if you run them in the project root!
+
+### Run mypy
+
+To check I used strict typing run:
+(I only excluded flask_openapi3, cause I could not resolve that issue.)
+
+```
+mypy .
+```
 
 ### Run database
 
