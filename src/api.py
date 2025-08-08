@@ -3,12 +3,15 @@ from flask_openapi3 import OpenAPI
 from flask_cors import CORS
 import os
 
-from controller import api_view
+from controllers.counter_controller import api_view
 
 
 def create_app(test_config=None):
     info = Info(title="Counter API", version="1.0.0")
     app = OpenAPI(__name__, info=info)
+
+    if test_config:
+        app.config.update(test_config)
 
     app.register_api(api=api_view)
 

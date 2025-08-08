@@ -7,3 +7,5 @@ types-Flask-Cors
 psycopg==3.2.9
 dotenv
 psycopg_pool
+pytest
+pytest-mock
